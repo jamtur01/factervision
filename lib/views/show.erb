@@ -1,0 +1,23 @@
+<div class="span4"></div>
+
+<div class="span10">
+<br />
+<br />
+
+<div class="hero-unit">
+  <h3>FacterVision output for <%= @email.email %></h3>
+
+<br />
+
+<% @results.each do |f| %>
+  <p><strong><%= f.created_at %></strong></p>
+  <% f.facts.sort.each do |fact,value| %>
+    <p id="facts"><%= fact %> = <%= value %></p>
+  <% end %>
+<% end %>
+
+</div>
+
+<br />
+<br />
+</div>

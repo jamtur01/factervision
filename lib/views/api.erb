@@ -1,0 +1,41 @@
+<div class="span4"></div>
+
+<div class="span10">
+<br />
+<br />
+
+<div class="hero-unit">
+<h2>FacterVision API</h2>
+
+<br />
+
+<p>FacterVision allows you to send facts to our central server.</p>
+
+<p>You can generate facts using Facter</p>
+
+<pre class="prettyprint">
+$ facter --json > facts.json
+</pre>
+
+<p>And then sending them to the API endpoint, for example using curl. You will need an API key which you can get by <a href="<%= url('/signup') %>">signing up</a>.</p>
+
+<pre class="prettyprint">
+$ curl -i --data-urlencode facts@facts.json http://localhost:4567/upload?key=c20712d0-48ed-0130-518d-705681c14ec3
+HTTP/1.1 200 OK
+X-Content-Type-Options: nosniff
+X-Frame-Options: SAMEORIGIN
+Set-Cookie: rack.session=BAh7CCINdHJhY2tpbmd7CCIZSFRUUF9BQ0NFUFRfRU5DT0RJTkciLWRhMzlh%0AM2VlNWU2YjRiMGQzMjU1YmZlZjk1NjAxODkwYWZkODA3MDkiFEhUVFBfVVNF%0AUl9BR0VOVCItOThkYzQ1OTkxNTA0ZjkwYTBjYWRkZmFlYjkzOTFhMmI5Y2Ex%0AYzY0NCIZSFRUUF9BQ0NFUFRfTEFOR1VBR0UiLWRhMzlhM2VlNWU2YjRiMGQz%0AMjU1YmZlZjk1NjAxODkwYWZkODA3MDkiCWNzcmYiRTc0NWUyYWE0NTJkYzY4%0AMjhlNjc1ZDRhZDUyMjRjOTkxMDVkYjNlN2M5Nzg4NDI1YzRiM2FlN2NmMzA0%0AM2VjZmYiD3Nlc3Npb25faWQiRTEwMmIzOWEzZGMyNTlkNmE3ZTY4ZWQzOTQ4%0AYmQ0YTkyZDVlN2U4ZWViN2E1NWYxNjE2NjA0NTVlN2ZiYWFlNmY%3D%0A--f2ea57571e1631b44d0ea9b6e41c94efed21b559; path=/; HttpOnly
+Content-Length: 15
+X-XSS-Protection: 1; mode=block
+Content-Type: text/html;charset=utf-8
+Connection: keep-alive
+Server: thin 1.5.0 codename Knife
+
+Facts processed
+</pre>
+
+</div>
+
+<br />
+<br />
+</div>
