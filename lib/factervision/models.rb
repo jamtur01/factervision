@@ -55,7 +55,7 @@ module FacterVision
       Tokens.create(:access_token => access_token, :email => email)
     end
 
-    def self.get_token(token)
+    def self.get_user(token)
       Tokens.first(:access_token => token)
     end
 
@@ -63,8 +63,5 @@ module FacterVision
       Tokens.first(:email => email)
     end
 
-    def self.get_email(access_token)
-      Tokens.first(:access_token => access_token)
-    end
   end
 end

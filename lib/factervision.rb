@@ -67,7 +67,7 @@ module FacterVision
 
     post "/upload/?" do
       requires_params :facts, :key
-      halt 401, {'Content-Type' => 'text/plain'}, 'No matching API key found' unless FacterVision::Token.get_token(params[:key])
+      halt 401, {'Content-Type' => 'text/plain'}, 'No matching API key found' unless FacterVision::Token.get_user(params[:key])
       logger.info "Received API upload call."
       @facts = FacterVision::Fact.add_facts(params[:facts], params[:key])
       if @facts.saved?
@@ -80,10 +80,10 @@ module FacterVision
 
     get "/show/?" do
       requires_params :key
-      halt 401, {'Content-Type' => 'text/plain'}, 'No matching API key found' unless FacterVision::Token.get_token(params[:key])
+      halt 401, {'Content-Type' => 'text/plain'}, 'No matching API key found' unless FacterVision::Token.get_user(params[:key])
       logger.info "Received API show call for #{params[:key]}."
       @results = FacterVision::Fact.get_facts(params[:key])
-      @email = FacterVision::Token.get_email(params[:key])
+      @email = FacterVision::Token.get_user(params[:key])
       erb :show
     end
 
